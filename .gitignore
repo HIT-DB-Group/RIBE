@@ -1,0 +1,88 @@
+**__pycache__
+**.pyc
+
+tags
+.coverage
+htmlcov/
+
+**.DS_Store
+**.tbl
+query_0.sql
+
+misc/**
+
+database_connection.json
+index_selection_evaluation/benchmark_results
+index_selection_evaluation/selection/result/**
+
+.vscode
+full_processed_workload
+full_query_batch
+
+
+index_selection_evaluation/cost_estimation/samples/*
+
+
+# hypopg
+
+index_selection_evaluation/hypopg/*.o
+index_selection_evaluation/hypopg/*.a
+index_selection_evaluation/hypopg/*.so
+index_selection_evaluation/hypopg/*.pc
+index_selection_evaluation/hypopg/*~
+index_selection_evaluation/hypopg/.*.sw?
+index_selection_evaluation/hypopg/hypopg-*.zip
+index_selection_evaluation/hypopg/results/
+
+
+# tpch-kit/
+
+index_selection_evaluation/tpch-kit/*.o
+index_selection_evaluation/tpch-kit/dbgen/*.o
+index_selection_evaluation/tpch-kit/*.tbl
+index_selection_evaluation/tpch-kit/dbgen/dbgen
+index_selection_evaluation/tpch-kit/dbgen/qgen
+
+# tpcds-kit
+
+# OS X
+index_selection_evaluation/tpcds-kit/.DS_Store
+
+# Object files
+index_selection_evaluation/tpcds-kit/tools/*.o
+
+# Libraries
+index_selection_evaluation/tpcds-kit/tools/*.lib
+index_selection_evaluation/tpcds-kit/tools/*.a
+
+# Shared objects (inc. Windows DLLs)
+index_selection_evaluation/tpcds-kit/tools/*.dll
+index_selection_evaluation/tpcds-kit/tools/*.so
+index_selection_evaluation/tpcds-kit/tools/*.so.*
+index_selection_evaluation/tpcds-kit/tools/*.dylib
+
+# Executables
+index_selection_evaluation/tpcds-kit/tools/*.exe
+index_selection_evaluation/tpcds-kit/tools/*.out
+index_selection_evaluation/tpcds-kit/tools/*.app
+
+# Generated files
+index_selection_evaluation/tpcds-kit/tools/tables.h
+index_selection_evaluation/tpcds-kit/tools/streams.h
+index_selection_evaluation/tpcds-kit/tools/mkheader
+index_selection_evaluation/tpcds-kit/tools/columns.h
+index_selection_evaluation/tpcds-kit/tools/tpcds.idx.h
+index_selection_evaluation/tpcds-kit/tools/tpcds.idx
+index_selection_evaluation/tpcds-kit/tools/distcomp
+index_selection_evaluation/tpcds-kit/tools/y.tab.h
+index_selection_evaluation/tpcds-kit/tools/y.tab.c
+index_selection_evaluation/tpcds-kit/tools/y.output
+index_selection_evaluation/tpcds-kit/tools/tokenizer.c
+index_selection_evaluation/tpcds-kit/tools/dsqgen
+index_selection_evaluation/tpcds-kit/tools/dsdgen
+index_selection_evaluation/tpcds-kit/tools/checksum
+index_selection_evaluation/tpcds-kit/tools/.ctags_updated
+index_selection_evaluation/tpcds-kit/tools/tags
+
+# Flat files
+index_selection_evaluation/tpcds-kit/tools/*.dat

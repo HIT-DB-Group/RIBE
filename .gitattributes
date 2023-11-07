@@ -1,0 +1,6 @@
+index_selection_evaluation/tpch-kit/ref_data/* linguist-vendored
+index_selection_evaluation/tpcds-kit/*.sql linguist-language=SQL
+index_selection_evaluation/tpcds-kit/*.tpl linguist-language=SQL
+index_selection_evaluation/tpcds-kit/*.ans linguist-language=Text
+index_selection_evaluation/tpcds-kit/answer_sets/* linguist-vendored
+index_selection_evaluation/tpcds-kit/tools/* linguist-vendored=false

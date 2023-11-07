@@ -1,0 +1,57 @@
+start: selectstmt
+selectstmt : selectstmtfromtable //orderbyoptional
+selectstmtfromtable : "FROM" tablerefs selectstmtbasic selectend whereclauseoptional whereend havingclause havingend selectstmtgroup queryend
+!selectstmtbasic : "SELECT" selectstmtfieldlist
+!selectstmtfieldlist : selectfieldlist
+!selectfieldlist :  selectstmtfield | selectfieldlist "," selectstmtfield
+!selectstmtfield :  tablecolumn | function
+
+!function : tablecolumn  funcop
+funcop : "MAX" | "MIN"  | "AVG" | "SUM" | "COUNT"
+
+!tablerefs : tablerefs "," tablename | tablename
+
+!whereclauseoptional : ["WHERE" whereclause]
+
+whereclause : [joinfield logand] expression
+
+joinfield : join | joinfield logand join
+
+join : jointablecolumn joinop jointablecolumn
+
+haveexpression: haveexpression logand haveboolpri
+                | haveboolpri
+
+haveboolpri: tablecolumn compareop value
+           | function compareop value
+
+expression : expression logand boolpri
+                | "NOT" boolpri
+                | boolpri
+boolpri : tablecolumn compareop value
+
+            
+!subselect : "(" selectstmtfromtable ")"
+
+!tablecolumn : tablename "." columnname
+jointablecolumn : tablename "." joincolumnname
+
+selectstmtgroup :  ["GROUP" "BY" bylist]
+
+!bylist : byitem | bylist "," byitem
+byitem : tablecolumn
+
+orderbyoptional : ["ORDER" "BY" bylist]
+havingclause : ["HAVING" haveexpression]
+queryend : []
+selectend : []
+whereend :[]
+havingend :[]
+anyorall    : "ANY" |  "SOME"  |  "ALL"
+compareop   : "<="  |   "<"     |   ">="    |   ">" |   "!="    |  "="
+inornotop   : "IN"  |   "NOT IN"
+logand      : "AND"
+joinop : "="
+
+%import common.WS
+%ignore WS

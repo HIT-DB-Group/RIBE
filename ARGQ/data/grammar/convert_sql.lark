@@ -1,0 +1,61 @@
+start: selectstmt
+selectstmt : selectstmtfromtable //orderbyoptional
+selectstmtfromtable : "FROM" tablerefs selectstmtbasic selectend whereclauseoptional whereend havingclause havingend selectstmtgroup queryend
+!selectstmtbasic : "SELECT" selectstmtfieldlist
+!selectstmtfieldlist : selectfieldlist
+!selectfieldlist :  selectstmtfield | selectfieldlist "," selectstmtfield
+!selectstmtfield :  tablecolumn | function
+
+!function : tablecolumn  funcop
+funcop : "MAX" | "MIN"  | "AVG" | "SUM" | "COUNT"
+
+!tablerefs : tablerefs "," tablename | tablename
+
+!whereclauseoptional : ["WHERE" whereclause]
+
+whereclause : [joinfield logand] expression
+
+joinfield : join | joinfield logand join
+
+join : jointablecolumn joinop jointablecolumn
+
+haveexpression: haveexpression logand haveboolpri
+                | haveboolpri
+
+haveboolpri: tablecolumn compareop value
+           | function compareop value
+
+expression : expression logand boolpri
+                | "NOT" boolpri
+                | boolpri
+boolpri : tablecolumn compareop value
+
+            
+!subselect : "(" selectstmtfromtable ")"
+
+!tablecolumn : tablename "." columnname
+jointablecolumn : tablename "." joincolumnname
+
+selectstmtgroup :  ["GROUP" "BY" bylist]
+
+!bylist : byitem | bylist "," byitem
+byitem : tablecolumn
+
+orderbyoptional : ["ORDER" "BY" bylist]
+havingclause : ["HAVING" haveexpression]
+queryend : []
+selectend : []
+whereend :[]
+havingend :[]
+anyorall    : "ANY" |  "SOME"  |  "ALL"
+compareop   : "<="  |   "<"     |   ">="    |   ">" |   "!="    |  "="
+inornotop   : "IN"  |   "NOT IN"
+logand      : "AND"
+joinop : "="
+
+%import common.WS
+%ignore WS
+tablename:"title"|"movie_info"|"movie_keyword"|"movie_info_idx"|"movie_companies"|"cast_info"
+value:"0"|"1"|"2"|"3"|"4"|"5"|"6"|"7"|"8"|"9"|"10"|"11"|"12"|"13"|"14"|"15"|"16"|"17"|"18"|"19"|"20"|"21"|"22"|"23"|"24"|"25"|"26"|"27"|"28"|"29"|"30"|"31"|"32"|"33"|"34"|"35"|"36"|"37"|"38"|"39"|"40"|"41"|"42"|"43"|"44"|"45"|"46"|"47"|"48"|"49"
+columnname:"movie_info_idx_movie_id"|"movie_companies_movie_id"|"movie_companies_company_id"|"movie_info_info_type_id"|"movie_keyword_keyword_id"|"movie_info_idx_info_type_id"|"movie_keyword_movie_id"|"title_id"|"title_production_year"|"cast_info_role_id"|"movie_info_movie_id"|"title_kind_id"|"cast_info_movie_id"|"movie_companies_company_type_id"
+joincolumnname:"movie_companies_movie_id"|"movie_info_idx_movie_id"|"movie_keyword_movie_id"|"title_id"|"movie_info_movie_id"|"cast_info_movie_id"
